@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0417A22B27E4847200750027 /* SessionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417A22A27E4847200750027 /* SessionRequest.swift */; };
+		0417A22E27E4AC4400750027 /* FavoriteDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417A22C27E4AC4400750027 /* FavoriteDropDownCell.swift */; };
+		0417A22F27E4AC4400750027 /* FavoriteDropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0417A22D27E4AC4400750027 /* FavoriteDropDownCell.xib */; };
+		0417A23127E4C25E00750027 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417A23027E4C25E00750027 /* RadioButton.swift */; };
 		1654AF9B5118F79C1ACB2509 /* Pods_MyTravelHelperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4A9E0F8C97F8AA92AAA053 /* Pods_MyTravelHelperTests.framework */; };
 		753C8FA422361EC9005FF13B /* TrainMovements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753C8FA122361EC9005FF13B /* TrainMovements.swift */; };
 		753C8FA522361EC9005FF13B /* StationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753C8FA222361EC9005FF13B /* StationInfo.swift */; };
@@ -42,6 +45,9 @@
 
 /* Begin PBXFileReference section */
 		0417A22A27E4847200750027 /* SessionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRequest.swift; sourceTree = "<group>"; };
+		0417A22C27E4AC4400750027 /* FavoriteDropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDropDownCell.swift; sourceTree = "<group>"; };
+		0417A22D27E4AC4400750027 /* FavoriteDropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteDropDownCell.xib; sourceTree = "<group>"; };
+		0417A23027E4C25E00750027 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		11F481535B44216B54872EF2 /* Pods-MyTravelHelperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTravelHelperTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyTravelHelperTests/Pods-MyTravelHelperTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F515F7A370B032163D445BC /* Pods-MyTravelHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTravelHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyTravelHelper/Pods-MyTravelHelper.release.xcconfig"; sourceTree = "<group>"; };
 		4A3D05BF450D92647BC863F2 /* Pods-MyTravelHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTravelHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyTravelHelper/Pods-MyTravelHelper.debug.xcconfig"; sourceTree = "<group>"; };
@@ -231,6 +237,8 @@
 			children = (
 				753C8FAD22362463005FF13B /* SearchTrainViewController.swift */,
 				753C8FB92236BD80005FF13B /* TrainInfoCell.swift */,
+				0417A22C27E4AC4400750027 /* FavoriteDropDownCell.swift */,
+				0417A22D27E4AC4400750027 /* FavoriteDropDownCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -243,6 +251,7 @@
 				753C8FB422367D1C005FF13B /* AppUtils.swift */,
 				753C8FB622367DF4005FF13B /* ProgressIndicator.swift */,
 				0417A22A27E4847200750027 /* SessionRequest.swift */,
+				0417A23027E4C25E00750027 /* RadioButton.swift */,
 			);
 			path = "App-utils";
 			sourceTree = "<group>";
@@ -335,6 +344,7 @@
 			files = (
 				753F0851223618AD00175107 /* LaunchScreen.storyboard in Resources */,
 				753F084E223618AD00175107 /* Assets.xcassets in Resources */,
+				0417A22F27E4AC4400750027 /* FavoriteDropDownCell.xib in Resources */,
 				753F084C223618AB00175107 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +428,7 @@
 			files = (
 				753C8FBA2236BD80005FF13B /* TrainInfoCell.swift in Sources */,
 				753C8FA822361FC0005FF13B /* SearchTrainProtocols.swift in Sources */,
+				0417A22E27E4AC4400750027 /* FavoriteDropDownCell.swift in Sources */,
 				753C8FAA2236228C005FF13B /* SearchTrainPresenter.swift in Sources */,
 				753C8FAE22362463005FF13B /* SearchTrainViewController.swift in Sources */,
 				753C8FB722367DF4005FF13B /* ProgressIndicator.swift in Sources */,
@@ -425,6 +436,7 @@
 				753C8FA522361EC9005FF13B /* StationInfo.swift in Sources */,
 				753C8FBC223731E3005FF13B /* Reachability.swift in Sources */,
 				753C8FA622361EC9005FF13B /* Stations.swift in Sources */,
+				0417A23127E4C25E00750027 /* RadioButton.swift in Sources */,
 				753C8FAC223623C2005FF13B /* SearchTrainInteractor.swift in Sources */,
 				753F087122361A6500175107 /* AppConstants.swift in Sources */,
 				753F0847223618AB00175107 /* AppDelegate.swift in Sources */,

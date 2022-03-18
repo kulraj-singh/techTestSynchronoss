@@ -14,8 +14,33 @@ class SearchTrainViewController: UIViewController {
     @IBOutlet weak var destinationTextField: UITextField!
     @IBOutlet weak var sourceTxtField: UITextField!
     @IBOutlet weak var trainsListTable: UITableView!
+    @IBOutlet weak var favoriteToggleView: UIView!
+    @IBOutlet weak var stationTextLabel: UILabel!
+    @IBOutlet weak var sourceRadioButton: UIButton!
+    @IBOutlet weak var destinationRadioButton: UIButton!
 
-    var stationsList:[Station] = [Station]()
+    var stationsList:[Station] = [Station]() {
+        didSet {
+            filteredStationsList = stationsList
+        }
+    }
+    var filteredStationsList: [Station] = []
+    var favoriteStation: Station? {
+        didSet {
+            if let favoriteStation = favoriteStation {
+                favoriteToggleView.isHidden = false
+                stationTextLabel.text = favoriteStation.stationDesc
+                if sourceRadioButton.isSelected {
+                    sourceTxtField.text = favoriteStation.stationDesc
+                }
+                if destinationRadioButton.isSelected {
+                    destinationTextField.text = favoriteStation.stationDesc
+                }
+            } else {
+                favoriteToggleView.isHidden = true
+            }
+        }
+    }
     var trains:[StationTrain] = [StationTrain]()
     var presenter:ViewToPresenterProtocol?
     var dropDown = DropDown()
@@ -36,8 +61,32 @@ class SearchTrainViewController: UIViewController {
 
     @IBAction func searchTrainsTapped(_ sender: Any) {
         view.endEditing(true)
+        if transitPoints.source.isEmpty || transitPoints.destination.isEmpty {
+            showAlert(title: "Alert", message: "source and destination should be selected", actionTitle: "OK")
+            return
+        }
         showProgressIndicator(view: self.view)
         presenter?.searchTapped(source: transitPoints.source, destination: transitPoints.destination)
+    }
+    
+    @IBAction func sourceRadioButtonClicked(_ sender: Any) {
+        sourceTxtField.text = favoriteStation?.stationDesc
+        if destinationTextField.text != nil,
+           favoriteStation?.stationDesc == destinationTextField.text {
+            destinationTextField.text = ""
+        }
+        sourceRadioButton.isSelected = true
+        destinationRadioButton.isSelected = false
+    }
+    
+    @IBAction func destinationRadioButtonClicked(_ sender: Any) {
+        destinationTextField.text = favoriteStation?.stationDesc
+        if sourceTxtField.text != nil,
+           favoriteStation?.stationDesc == sourceTxtField.text {
+            sourceTxtField.text = ""
+        }
+        sourceRadioButton.isSelected = false
+        destinationRadioButton.isSelected = true
     }
 }
 
@@ -91,6 +140,29 @@ extension SearchTrainViewController:PresenterToViewProtocol {
 extension SearchTrainViewController:UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         dropDown = DropDown()
+        /*** IMPORTANT PART FOR CUSTOM CELLS ***/
+        dropDown.cellNib = UINib(nibName: "FavoriteDropDownCell", bundle: nil)
+        dropDown.customCellConfiguration = { [weak self] (index: Index, item: String, cell: DropDownCell) -> Void in
+           guard let cell = cell as? FavoriteDropDownCell else { return }
+
+            if let favoriteStationText = self?.favoriteStation?.stationDesc,
+               favoriteStationText == item {
+                cell.favoriteIcon.isHighlighted = true
+            }
+            cell.favoriteToggled = { [weak self] isFavorite in
+                guard let weakSelf = self else {
+                    return
+                }
+                if isFavorite {
+                    if index < weakSelf.filteredStationsList.count {
+                        self?.favoriteStation = weakSelf.filteredStationsList[index]
+                    }
+                } else {
+                    self?.favoriteStation = nil
+                }
+                weakSelf.dropDown.reloadAllComponents()
+            }
+        }
         dropDown.anchorView = textField
         dropDown.direction = .bottom
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
@@ -120,11 +192,18 @@ extension SearchTrainViewController:UITextFieldDelegate {
                 desiredSearchText = String(desiredSearchText.dropLast())
             }
 
-            let stations = stationsList.map({
+            filteredStationsList = stationsList.filter({
+                if desiredSearchText.count == 0 {
+                    return true
+                }
+                return $0.stationDesc.lowercased().contains(desiredSearchText.lowercased())
+            })
+            let filteredStations = filteredStationsList.map({
                 return $0.stationDesc
             })
-            dropDown.dataSource = stations
+            dropDown.dataSource = filteredStations
             dropDown.show()
+           
             dropDown.reloadAllComponents()
         }
         return true

@@ -39,6 +39,8 @@ class SessionRequest {
                 success(data)
             } else if let error = error {
                 errorBlock(error)
+            } else {
+                errorBlock(NSError(domain: "no data", code: 500, userInfo: nil))
             }
         })
         dataTask.resume()

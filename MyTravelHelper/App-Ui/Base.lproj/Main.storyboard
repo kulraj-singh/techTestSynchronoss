@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,16 +19,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sce-XX-cIg">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="183"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="146.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03l-Qb-cUG">
-                                        <rect key="frame" x="20" y="20" width="90" height="25.5"/>
+                                        <rect key="frame" x="20" y="20" width="90" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destination" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atW-El-q6l">
-                                        <rect key="frame" x="20" y="69.5" width="90" height="25.5"/>
+                                        <rect key="frame" x="20" y="64.5" width="90" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -79,7 +80,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uhV-3e-Ofc">
-                                <rect key="frame" x="0.0" y="183" width="375" height="484"/>
+                                <rect key="frame" x="0.0" y="340.5" width="375" height="326.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -172,23 +173,93 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Nxg-Ee-gfn"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jb-EM-eVa">
+                                <rect key="frame" x="8" y="162.5" width="351" height="138"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="favorite Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8t-gP-JxP">
+                                        <rect key="frame" x="8" y="0.0" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ka-lk-l4y" customClass="RadioButton" customModule="MyTravelHelper" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="45" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="DLE-vk-uxw"/>
+                                            <constraint firstAttribute="width" constant="30" id="noR-fx-yfS"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="unselectedRaioButton"/>
+                                        <connections>
+                                            <action selector="sourceRadioButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zqa-R2-ZfI"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQY-de-O8T">
+                                        <rect key="frame" x="80" y="49.5" width="54" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VuB-CU-NpK" customClass="RadioButton" customModule="MyTravelHelper" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="85" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="CHy-0R-Rxw"/>
+                                            <constraint firstAttribute="width" constant="30" id="LCQ-zH-sDA"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="unselectedRaioButton"/>
+                                        <connections>
+                                            <action selector="destinationRadioButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MaB-5T-RtD"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destination" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKP-Ue-v25">
+                                        <rect key="frame" x="80" y="89.5" width="86.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                <constraints>
+                                    <constraint firstItem="LKP-Ue-v25" firstAttribute="centerY" secondItem="VuB-CU-NpK" secondAttribute="centerY" id="2hJ-eD-ynX"/>
+                                    <constraint firstItem="F8t-gP-JxP" firstAttribute="top" secondItem="2jb-EM-eVa" secondAttribute="top" id="7CL-hh-Vc8"/>
+                                    <constraint firstAttribute="bottom" secondItem="VuB-CU-NpK" secondAttribute="bottom" constant="23" id="BBF-1A-z4b"/>
+                                    <constraint firstItem="F8t-gP-JxP" firstAttribute="leading" secondItem="2jb-EM-eVa" secondAttribute="leading" constant="8" id="KCq-Lp-zBJ"/>
+                                    <constraint firstItem="VuB-CU-NpK" firstAttribute="top" secondItem="2ka-lk-l4y" secondAttribute="bottom" constant="10" id="KZU-Re-I75"/>
+                                    <constraint firstAttribute="trailing" secondItem="F8t-gP-JxP" secondAttribute="trailing" constant="8" id="NUm-Cu-6y5"/>
+                                    <constraint firstItem="EQY-de-O8T" firstAttribute="leading" secondItem="2ka-lk-l4y" secondAttribute="trailing" constant="30" id="P4E-3x-Dgy"/>
+                                    <constraint firstItem="2ka-lk-l4y" firstAttribute="top" secondItem="F8t-gP-JxP" secondAttribute="bottom" constant="24.5" id="a3v-QU-shr"/>
+                                    <constraint firstItem="EQY-de-O8T" firstAttribute="centerY" secondItem="2ka-lk-l4y" secondAttribute="centerY" id="agC-BS-eNw"/>
+                                    <constraint firstItem="LKP-Ue-v25" firstAttribute="leading" secondItem="VuB-CU-NpK" secondAttribute="trailing" constant="30" id="avK-BA-1ri"/>
+                                    <constraint firstItem="2ka-lk-l4y" firstAttribute="leading" secondItem="2jb-EM-eVa" secondAttribute="leading" constant="20" id="e74-To-nlk"/>
+                                    <constraint firstItem="VuB-CU-NpK" firstAttribute="leading" secondItem="2jb-EM-eVa" secondAttribute="leading" constant="20" id="jAY-zN-btf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="uhV-3e-Ofc" firstAttribute="top" secondItem="hqT-Ku-6NI" secondAttribute="bottom" constant="40" id="5sP-Lj-uga"/>
+                            <constraint firstItem="2jb-EM-eVa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="DXT-b9-eIb"/>
                             <constraint firstItem="Sce-XX-cIg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SCB-eo-9re"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uhV-3e-Ofc" secondAttribute="trailing" id="Tj9-lV-655"/>
-                            <constraint firstItem="uhV-3e-Ofc" firstAttribute="top" secondItem="Sce-XX-cIg" secondAttribute="bottom" id="Uuu-6O-8Xq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uhV-3e-Ofc" secondAttribute="bottom" id="WSE-Aw-QGZ"/>
+                            <constraint firstItem="uhV-3e-Ofc" firstAttribute="top" secondItem="2jb-EM-eVa" secondAttribute="bottom" constant="40" id="aTq-p9-I5O"/>
+                            <constraint firstItem="2jb-EM-eVa" firstAttribute="top" secondItem="Sce-XX-cIg" secondAttribute="bottom" constant="16" id="esk-oY-59F"/>
                             <constraint firstItem="uhV-3e-Ofc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lat-ow-57E"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Sce-XX-cIg" secondAttribute="trailing" id="mMB-e2-4VM"/>
                             <constraint firstItem="Sce-XX-cIg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nt5-e3-L0y"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2jb-EM-eVa" secondAttribute="trailing" constant="16" id="zaI-AI-PaW"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="destinationRadioButton" destination="VuB-CU-NpK" id="Viu-pQ-ua8"/>
                         <outlet property="destinationTextField" destination="PcD-qO-M9L" id="mWk-Lt-piK"/>
+                        <outlet property="favoriteToggleView" destination="2jb-EM-eVa" id="fUN-VR-b1i"/>
+                        <outlet property="sourceRadioButton" destination="2ka-lk-l4y" id="3tp-To-3gy"/>
                         <outlet property="sourceTxtField" destination="W27-5y-G6c" id="CJZ-Fn-AdG"/>
+                        <outlet property="stationTextLabel" destination="F8t-gP-JxP" id="OJx-Si-e89"/>
                         <outlet property="trainsListTable" destination="uhV-3e-Ofc" id="3e4-c3-P0u"/>
                     </connections>
                 </viewController>
@@ -199,5 +270,9 @@
     </scenes>
     <resources>
         <image name="train" width="75" height="75"/>
+        <image name="unselectedRaioButton" width="24" height="24"/>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

@@ -37,7 +37,9 @@ extension SearchTrainPresenter: InteractorToPresenterProtocol {
     }
 
     func showNoTrainAvailbilityFromSource() {
-        view!.showNoTrainAvailbilityFromSource()
+        DispatchQueue.main.async { [weak self] in
+            self?.view?.showNoTrainAvailbilityFromSource()
+        }
     }
 
     func fetchedTrainsList(trainsList: [StationTrain]?) {
