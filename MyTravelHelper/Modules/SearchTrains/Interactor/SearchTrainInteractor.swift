@@ -59,7 +59,6 @@ class SearchTrainInteractor: PresenterToInteractorProtocol {
             if Reach().isNetworkReachable() {
                 Alamofire.request(_urlString).response { (movementsData) in
                     let trainMovements = try? XMLDecoder().decode(TrainMovementsData.self, from: movementsData.data!)
-
                     if let _movements = trainMovements?.trainMovements {
                         let sourceIndex = _movements.firstIndex(where: {$0.locationCode.caseInsensitiveCompare(self._sourceStationCode) == .orderedSame})
                         let destinationIndex = _movements.firstIndex(where: {$0.locationCode.caseInsensitiveCompare(self._destinationStationCode) == .orderedSame})

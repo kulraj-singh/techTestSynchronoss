@@ -41,7 +41,8 @@ extension SearchTrainPresenter: InteractorToPresenterProtocol {
     }
 
     func fetchedTrainsList(trainsList: [StationTrain]?) {
-        if let _trainsList = trainsList {
+        if let _trainsList = trainsList,
+            _trainsList.count > 0 {
             view!.updateLatestTrainList(trainsList: _trainsList)
         }else {
             view!.showNoTrainsFoundAlert()
