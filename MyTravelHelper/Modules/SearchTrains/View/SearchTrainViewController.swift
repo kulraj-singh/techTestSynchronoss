@@ -45,14 +45,8 @@ class SearchTrainViewController: UIViewController {
             
             favoriteToggleView.isHidden = false
             stationTextLabel.text = favoriteStation.stationDesc
-            if sourceRadioButton.isSelected {
-                sourceTxtField.text = favoriteStation.stationDesc
-                transitPoints.source = favoriteStation.stationDesc
-            }
-            if destinationRadioButton.isSelected {
-                destinationTextField.text = favoriteStation.stationDesc
-                transitPoints.destination = favoriteStation.stationDesc
-            }
+            sourceRadioButton.isSelected = false
+            destinationRadioButton.isSelected = false
             UserDefaults.standard.set(favoriteStation.stationId, forKey: favoriteStationCodeKey)
         } else {
             favoriteToggleView.isHidden = true
@@ -79,9 +73,9 @@ class SearchTrainViewController: UIViewController {
 
     @IBAction func searchTrainsTapped(_ sender: Any) {
         view.endEditing(true)
+        print("source = \(transitPoints.source), destination = \(transitPoints.destination)")
         if transitPoints.source.isEmpty || transitPoints.destination.isEmpty {
             showAlert(title: "Alert", message: "source and destination should be selected", actionTitle: "OK")
-            print("source = \(transitPoints.source), destination = \(transitPoints.destination)")
             return
         }
         showProgressIndicator(view: self.view)
@@ -99,6 +93,7 @@ class SearchTrainViewController: UIViewController {
         }
         sourceRadioButton.isSelected = true
         destinationRadioButton.isSelected = false
+        view.endEditing(true)
     }
     
     @IBAction func destinationRadioButtonClicked(_ sender: Any) {
@@ -112,6 +107,7 @@ class SearchTrainViewController: UIViewController {
         }
         sourceRadioButton.isSelected = false
         destinationRadioButton.isSelected = true
+        view.endEditing(true)
     }
 }
 
@@ -199,6 +195,7 @@ extension SearchTrainViewController:UITextFieldDelegate {
                 self.transitPoints.destination = item
             }
             textField.text = item
+            textField.resignFirstResponder()
         }
         dropDown.show()
     }
@@ -215,6 +212,14 @@ extension SearchTrainViewController:UITextFieldDelegate {
                 desiredSearchText = desiredSearchText + string
             }else {
                 desiredSearchText = String(desiredSearchText.dropLast())
+            }
+            switch textField {
+            case sourceTxtField:
+                transitPoints.source = desiredSearchText
+            case destinationTextField:
+                transitPoints.destination = desiredSearchText
+            default:
+                break
             }
 
             filteredStationsList = stationsList.filter({
