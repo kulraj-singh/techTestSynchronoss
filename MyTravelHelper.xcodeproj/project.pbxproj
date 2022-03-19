@@ -11,6 +11,11 @@
 		0417A22E27E4AC4400750027 /* FavoriteDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417A22C27E4AC4400750027 /* FavoriteDropDownCell.swift */; };
 		0417A22F27E4AC4400750027 /* FavoriteDropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0417A22D27E4AC4400750027 /* FavoriteDropDownCell.xib */; };
 		0417A23127E4C25E00750027 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417A23027E4C25E00750027 /* RadioButton.swift */; };
+		04E6E10E27E5BA0200686E0B /* ReachAvaillable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E10D27E5BA0200686E0B /* ReachAvaillable.swift */; };
+		04E6E11027E5BA4200686E0B /* ReachNotAvaillable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E10F27E5BA4200686E0B /* ReachNotAvaillable.swift */; };
+		04E6E11227E5BAC800686E0B /* SearchTrainInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E11127E5BAC800686E0B /* SearchTrainInteractorTests.swift */; };
+		04E6E11527E5C06F00686E0B /* SessionRequestSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E11427E5C06F00686E0B /* SessionRequestSuccess.swift */; };
+		04E6E11727E5C0A400686E0B /* SessionRequestFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6E11627E5C0A400686E0B /* SessionRequestFailure.swift */; };
 		1654AF9B5118F79C1ACB2509 /* Pods_MyTravelHelperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4A9E0F8C97F8AA92AAA053 /* Pods_MyTravelHelperTests.framework */; };
 		753C8FA422361EC9005FF13B /* TrainMovements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753C8FA122361EC9005FF13B /* TrainMovements.swift */; };
 		753C8FA522361EC9005FF13B /* StationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753C8FA222361EC9005FF13B /* StationInfo.swift */; };
@@ -48,6 +53,11 @@
 		0417A22C27E4AC4400750027 /* FavoriteDropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDropDownCell.swift; sourceTree = "<group>"; };
 		0417A22D27E4AC4400750027 /* FavoriteDropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteDropDownCell.xib; sourceTree = "<group>"; };
 		0417A23027E4C25E00750027 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		04E6E10D27E5BA0200686E0B /* ReachAvaillable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachAvaillable.swift; sourceTree = "<group>"; };
+		04E6E10F27E5BA4200686E0B /* ReachNotAvaillable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachNotAvaillable.swift; sourceTree = "<group>"; };
+		04E6E11127E5BAC800686E0B /* SearchTrainInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrainInteractorTests.swift; sourceTree = "<group>"; };
+		04E6E11427E5C06F00686E0B /* SessionRequestSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRequestSuccess.swift; sourceTree = "<group>"; };
+		04E6E11627E5C0A400686E0B /* SessionRequestFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRequestFailure.swift; sourceTree = "<group>"; };
 		11F481535B44216B54872EF2 /* Pods-MyTravelHelperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTravelHelperTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyTravelHelperTests/Pods-MyTravelHelperTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F515F7A370B032163D445BC /* Pods-MyTravelHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTravelHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyTravelHelper/Pods-MyTravelHelper.release.xcconfig"; sourceTree = "<group>"; };
 		4A3D05BF450D92647BC863F2 /* Pods-MyTravelHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTravelHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyTravelHelper/Pods-MyTravelHelper.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +108,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04E6E11327E5C04200686E0B /* SessionRequest */ = {
+			isa = PBXGroup;
+			children = (
+				04E6E11427E5C06F00686E0B /* SessionRequestSuccess.swift */,
+				04E6E11627E5C0A400686E0B /* SessionRequestFailure.swift */,
+			);
+			path = SessionRequest;
+			sourceTree = "<group>";
+		};
 		2BABC0CEC890350419CA1D40 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +182,11 @@
 		753F085A223618AE00175107 /* MyTravelHelperTests */ = {
 			isa = PBXGroup;
 			children = (
+				04E6E11327E5C04200686E0B /* SessionRequest */,
 				753C8FBD2237367E005FF13B /* SearchTrainPresenterTests.swift */,
+				04E6E10D27E5BA0200686E0B /* ReachAvaillable.swift */,
+				04E6E10F27E5BA4200686E0B /* ReachNotAvaillable.swift */,
+				04E6E11127E5BAC800686E0B /* SearchTrainInteractorTests.swift */,
 				753F085D223618AE00175107 /* Info.plist */,
 			);
 			path = MyTravelHelperTests;
@@ -450,6 +473,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E6E11027E5BA4200686E0B /* ReachNotAvaillable.swift in Sources */,
+				04E6E11727E5C0A400686E0B /* SessionRequestFailure.swift in Sources */,
+				04E6E11527E5C06F00686E0B /* SessionRequestSuccess.swift in Sources */,
+				04E6E10E27E5BA0200686E0B /* ReachAvaillable.swift in Sources */,
+				04E6E11227E5BAC800686E0B /* SearchTrainInteractorTests.swift in Sources */,
 				753C8FBE2237367E005FF13B /* SearchTrainPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

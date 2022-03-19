@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Method: String {
+enum SessionMethod: String {
     case get = "GET"
     case post = "POST"
     case put = "PUT"
@@ -19,7 +19,7 @@ class SessionRequest {
     
     let baseUrl = "http://api.irishrail.ie/realtime/realtime.asmx"
     
-    func sessionRequest(endPoint: String, params: [String: AnyObject] = [:], method: Method = .get, success: @escaping((Data) -> Void), errorBlock: @escaping((Error) -> Void)) {
+    func sessionRequest(endPoint: String, params: [String: AnyObject] = [:], method: SessionMethod = .get, success: @escaping((Data) -> Void), errorBlock: @escaping((Error) -> Void)) {
         var urlString = baseUrl + "/" + endPoint
         if method == .get {
             if params.keys.count > 0 {

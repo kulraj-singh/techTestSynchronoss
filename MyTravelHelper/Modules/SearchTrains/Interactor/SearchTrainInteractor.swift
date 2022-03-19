@@ -15,9 +15,10 @@ class SearchTrainInteractor: PresenterToInteractorProtocol {
     var presenter: InteractorToPresenterProtocol?
     
     var session = SessionRequest()
+    var reach = Reach()
 
     func fetchallStations() {
-        if Reach().isNetworkReachable() == true {
+        if reach.isNetworkReachable() == true {
             session.sessionRequest(endPoint: "getAllStationsXML", success: { [weak self] response in
                 let station = try? XMLDecoder().decode(Stations.self, from: response)
                 self?.presenter?.stationListFetched(list: station!.stationsList)
