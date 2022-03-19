@@ -12,6 +12,7 @@ enum Method: String {
     case get = "GET"
     case post = "POST"
     case put = "PUT"
+    case delete = "DELETE"
 }
 
 class SessionRequest {
@@ -20,12 +21,14 @@ class SessionRequest {
     
     func sessionRequest(endPoint: String, params: [String: AnyObject] = [:], method: Method = .get, success: @escaping((Data) -> Void), errorBlock: @escaping((Error) -> Void)) {
         var urlString = baseUrl + "/" + endPoint
-        if params.keys.count > 0 {
-            urlString.append("?")
-        }
-        for key in params.keys {
-            if let value = params[key] {
-                urlString.append("\(key)=\(value)&")
+        if method == .get {
+            if params.keys.count > 0 {
+                urlString.append("?")
+            }
+            for key in params.keys {
+                if let value = params[key] {
+                    urlString.append("\(key)=\(value)&")
+                }
             }
         }
         guard let url = URL(string: urlString) else {
@@ -34,6 +37,9 @@ class SessionRequest {
         }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
+        if method != .get {
+          // set urlRequest.httpBody
+        }
         let dataTask = URLSession.shared.dataTask(with: urlRequest, completionHandler: { data, urlResponse, error in
             if let data = data {
                 success(data)
