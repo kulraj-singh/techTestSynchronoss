@@ -35,17 +35,21 @@ class SearchTrainInteractor: PresenterToInteractorProtocol {
         let params = ["StationCode": sourceCode as AnyObject]
         if Reach().isNetworkReachable() {
             session.sessionRequest(endPoint: "getStationDataByCodeXML", params: params, success: { [weak self] response in
-                let stationData = try? XMLDecoder().decode(StationData.self, from: response)
-                if let _trainsList = stationData?.trainsList {
-                    self?.proceesTrainListforDestinationCheck(trainsList: _trainsList)
-                } else {
-                    self?.presenter?.showNoTrainAvailbilityFromSource()
-                }
+                self?.processResponse(response)
             }, errorBlock: { [weak self] _ in
                 self?.presenter?.showNoInterNetAvailabilityMessage()
             })
         } else {
-            self.presenter!.showNoInterNetAvailabilityMessage()
+            self.presenter?.showNoInterNetAvailabilityMessage()
+        }
+    }
+    
+    func processResponse(_ response: Data) {
+        let stationData = try? XMLDecoder().decode(StationData.self, from: response)
+        if let _trainsList = stationData?.trainsList {
+            proceesTrainListforDestinationCheck(trainsList: _trainsList)
+        } else {
+            presenter?.showNoTrainAvailbilityFromSource()
         }
     }
     

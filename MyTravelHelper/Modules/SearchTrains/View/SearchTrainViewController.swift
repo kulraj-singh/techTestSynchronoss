@@ -19,28 +19,44 @@ class SearchTrainViewController: UIViewController {
     @IBOutlet weak var sourceRadioButton: UIButton!
     @IBOutlet weak var destinationRadioButton: UIButton!
 
+    let favoriteStationCodeKey: String = "favoriteStationCodeKey"
+    
     var stationsList:[Station] = [Station]() {
         didSet {
             filteredStationsList = stationsList
+            let favoriteStationId = UserDefaults.standard.integer(forKey: favoriteStationCodeKey)
+            let stationsWithFavoriteId = stationsList.filter({
+                return $0.stationId == favoriteStationId
+            })
+            favoriteStation = stationsWithFavoriteId.first
         }
     }
     var filteredStationsList: [Station] = []
     var favoriteStation: Station? {
         didSet {
-            if let favoriteStation = favoriteStation {
-                favoriteToggleView.isHidden = false
-                stationTextLabel.text = favoriteStation.stationDesc
-                if sourceRadioButton.isSelected {
-                    sourceTxtField.text = favoriteStation.stationDesc
-                    transitPoints.source = favoriteStation.stationDesc
-                }
-                if destinationRadioButton.isSelected {
-                    destinationTextField.text = favoriteStation.stationDesc
-                    transitPoints.destination = favoriteStation.stationDesc
-                }
-            } else {
-                favoriteToggleView.isHidden = true
+            DispatchQueue.main.async { [weak self] in
+                self?.actionOnFavoriteStation()
             }
+        }
+    }
+    
+    func actionOnFavoriteStation() {
+        if let favoriteStation = favoriteStation {
+            
+            favoriteToggleView.isHidden = false
+            stationTextLabel.text = favoriteStation.stationDesc
+            if sourceRadioButton.isSelected {
+                sourceTxtField.text = favoriteStation.stationDesc
+                transitPoints.source = favoriteStation.stationDesc
+            }
+            if destinationRadioButton.isSelected {
+                destinationTextField.text = favoriteStation.stationDesc
+                transitPoints.destination = favoriteStation.stationDesc
+            }
+            UserDefaults.standard.set(favoriteStation.stationId, forKey: favoriteStationCodeKey)
+        } else {
+            favoriteToggleView.isHidden = true
+            UserDefaults.standard.set(-1, forKey: favoriteStationCodeKey)
         }
     }
     var trains:[StationTrain] = [StationTrain]()
