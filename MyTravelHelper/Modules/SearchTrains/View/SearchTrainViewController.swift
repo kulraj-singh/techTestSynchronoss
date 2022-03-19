@@ -32,9 +32,11 @@ class SearchTrainViewController: UIViewController {
                 stationTextLabel.text = favoriteStation.stationDesc
                 if sourceRadioButton.isSelected {
                     sourceTxtField.text = favoriteStation.stationDesc
+                    transitPoints.source = favoriteStation.stationDesc
                 }
                 if destinationRadioButton.isSelected {
                     destinationTextField.text = favoriteStation.stationDesc
+                    transitPoints.destination = favoriteStation.stationDesc
                 }
             } else {
                 favoriteToggleView.isHidden = true
@@ -63,6 +65,7 @@ class SearchTrainViewController: UIViewController {
         view.endEditing(true)
         if transitPoints.source.isEmpty || transitPoints.destination.isEmpty {
             showAlert(title: "Alert", message: "source and destination should be selected", actionTitle: "OK")
+            print("source = \(transitPoints.source), destination = \(transitPoints.destination)")
             return
         }
         showProgressIndicator(view: self.view)
@@ -71,9 +74,12 @@ class SearchTrainViewController: UIViewController {
     
     @IBAction func sourceRadioButtonClicked(_ sender: Any) {
         sourceTxtField.text = favoriteStation?.stationDesc
+        transitPoints.source = favoriteStation?.stationDesc ?? ""
+        
         if destinationTextField.text != nil,
            favoriteStation?.stationDesc == destinationTextField.text {
             destinationTextField.text = ""
+            transitPoints.destination = ""
         }
         sourceRadioButton.isSelected = true
         destinationRadioButton.isSelected = false
@@ -81,9 +87,12 @@ class SearchTrainViewController: UIViewController {
     
     @IBAction func destinationRadioButtonClicked(_ sender: Any) {
         destinationTextField.text = favoriteStation?.stationDesc
+        transitPoints.destination = favoriteStation?.stationDesc ?? ""
+        
         if sourceTxtField.text != nil,
            favoriteStation?.stationDesc == sourceTxtField.text {
             sourceTxtField.text = ""
+            transitPoints.source = ""
         }
         sourceRadioButton.isSelected = false
         destinationRadioButton.isSelected = true
